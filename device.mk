@@ -19,11 +19,11 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-$(call inherit-product, vendor/oneplus/oneplus6/device-vendor.mk)
-$(call inherit-product, vendor/omni/config/phone-xxhdpi-4096-dalvik-heap.mk)
-$(call inherit-product, vendor/omni/config/phone-xxhdpi-2048-hwui-memory.mk)
+$(call inherit-product, vendor/xiaomi/polaris/device-vendor.mk)
+$(call inherit-product, vendor/lineage/config/phone-xxhdpi-4096-dalvik-heap.mk)
+$(call inherit-product, vendor/lineage/config/phone-xxhdpi-2048-hwui-memory.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6/overlay/common
+DEVICE_PACKAGE_OVERLAYS += device/xiaomi/polaris/overlay/common
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
@@ -105,8 +105,8 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/oneplus/oneplus6/prebuilt/system,system) \
-    $(call find-copy-subdir-files,*,device/oneplus/oneplus6/prebuilt/root,root)
+    $(call find-copy-subdir-files,*,device/xiaomi/polaris/prebuilt/system,system) \
+    $(call find-copy-subdir-files,*,device/xiaomi/polaris/prebuilt/root,root)
 
 
 PRODUCT_AAPT_CONFIG := xxhdpi
@@ -115,24 +115,24 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # audio
 #PRODUCT_PACKAGES += \
-    audio.a2dp.default \
+    audio.a2dp.default
 
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/a2dp_audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/r_submix_audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/usb_audio_policy_configuration.xml
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus6/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
-    device/oneplus/oneplus6/keylayout/gf_input.kl:system/usr/keylayout/gf_input.kl
+    device/xiaomi/polaris/keylayout/fpc1020.kl:system/usr/keylayout/uinput-fpc.kl \
+    device/xiaomi/polaris/keylayout/gf_input.kl:system/usr/keylayout/uinput-goodix.kl
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.oneplus6
+    lights.polaris
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.lights=oneplus6
+    ro.hardware.lights=polaris
 
 PRODUCT_PACKAGES += \
     android.hardware.light-V2.0-java \
@@ -154,7 +154,6 @@ PRODUCT_PACKAGES += \
     libp61-jcop-kit \
     NQNfcNci \
     nqnfcee_access.xml \
-    nqnfcse_access.xml \
     Tag
 
 PRODUCT_PACKAGES += \
@@ -177,8 +176,8 @@ PRODUCT_PACKAGES += \
 
 # power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service.oneplus6 \
-    android.hardware.power@1.1-service.oneplus6.rc
+    android.hardware.power@1.1-service.polaris \
+    android.hardware.power@1.1-service.polaris.rc
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -210,9 +209,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0 \
     libandroid_net
-
-PRODUCT_PACKAGES += \
-    DeviceParts
 
 #PRODUCT_PACKAGES += \
     vndk-sp
@@ -247,8 +243,8 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 # does not exist as they are mutually exclusive.  Once all target's android_filesystem_config.h
 # have been removed, TARGET_FS_CONFIG_GEN should be made unconditional.
 DEVICE_CONFIG_DIR := $(dir $(firstword $(subst ]],, $(word 2, $(subst [[, ,$(_node_import_context))))))
-ifeq ($(wildcard device/oneplus/oneplus6/android_filesystem_config.h),)
-  TARGET_FS_CONFIG_GEN := device/oneplus/oneplus6/config.fs
+ifeq ($(wildcard device/xiaomi/polaris/android_filesystem_config.h),)
+  TARGET_FS_CONFIG_GEN := device/xiaomi/polaris/config.fs
 else
   $(warning **********)
   $(warning TODO: Need to replace legacy $(DEVICE_CONFIG_DIR)android_filesystem_config.h with config.fs)

@@ -19,8 +19,8 @@
 set -e
 
 # Required!
-DEVICE=oneplus6
-VENDOR=oneplus
+DEVICE=polaris
+VENDOR=xiaomi
 
 INITIAL_COPYRIGHT_YEAR=2018
 
@@ -30,7 +30,7 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 CM_ROOT="$MY_DIR"/../../..
 
-HELPER="$CM_ROOT"/vendor/omni/build/tools/extract_utils.sh
+HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -38,10 +38,10 @@ fi
 . "$HELPER"
 
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
+setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
 
 # Copyright headers and guards
-write_headers "oneplus6"
+write_headers "polaris"
 
 # The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
@@ -54,7 +54,7 @@ printf '\n%s\n' "ifeq (\$(QCPATH),)" >> "$ANDROIDMK"
 write_makefiles "$MY_DIR"/proprietary-files-qc.txt
 
 # Qualcomm performance blobs - conditional as well
-# in order to support Cyanogen OS builds
+# in order to support Lineage OS builds
 cat << EOF >> "$PRODUCTMK"
 endif
 

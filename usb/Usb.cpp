@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.usb@1.1-service.wahoo"
+#define LOG_TAG "android.hardware.usb@1.1-service.polaris"
 
 #include <android-base/logging.h>
 #include <assert.h>
@@ -41,8 +41,8 @@ namespace usb {
 namespace V1_1 {
 namespace implementation {
 
-const char ONEPLUS_USB_VENDOR_ID_STR[] = "2A70";
-const char ONEPLUS_USBC_35_ADAPTER_UNPLUGGED_ID_STR[] = "4ee7";
+const char XIAOMI_USB_VENDOR_ID_STR[] = "2A70";
+const char XIAOMI_USBC_35_ADAPTER_UNPLUGGED_ID_STR[] = "4ee7";
 
 // Set by the signal handler to destroy the thread
 volatile bool destroyThread;
@@ -752,8 +752,8 @@ Return<void> Usb::setCallback(const sp<V1_0::IUsbCallback> &callback) {
  */
 static bool canProductAutoSuspend(const std::string &deviceIdVendor,
     const std::string &deviceIdProduct) {
-  if (deviceIdVendor == ONEPLUS_USB_VENDOR_ID_STR &&
-      deviceIdProduct == ONEPLUS_USBC_35_ADAPTER_UNPLUGGED_ID_STR) {
+  if (deviceIdVendor == XIAOMI_USB_VENDOR_ID_STR &&
+      deviceIdProduct == XIAOMI_USBC_35_ADAPTER_UNPLUGGED_ID_STR) {
     return true;
   }
   return false;
