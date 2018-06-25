@@ -121,7 +121,6 @@
                 Resolution is 720P
             -->
             <MaxOverlay>5</MaxOverlay>
-            <BlendMode>0</BlendMode>
             <HRes>1280</HRes>
             <VRes>720</VRes>
             <Mode>CEA</Mode>
@@ -699,7 +698,7 @@
         To disable/enable audio stream playback
         support during power suspend - 0 or 1
     -->
-    <AudioStreamInSuspend>1</AudioStreamInSuspend>
+    <AudioStreamInSuspend>0</AudioStreamInSuspend>
 
     <!--
         Compensation delay for audio
