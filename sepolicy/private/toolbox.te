@@ -1,2 +1,0 @@
-allow toolbox oem_audio_device:dir { getattr relabelfrom };
-

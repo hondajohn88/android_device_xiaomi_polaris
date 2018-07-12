@@ -1,4 +1,0 @@
-type debugfs_wifi, fs_type, debugfs_type;
-type oem_data_file, file_type, data_file_type;
-
-type oem_audio_device, dev_type;
