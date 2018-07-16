@@ -34,9 +34,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Launcher3
 
-# NFC
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
-
 # Call the proprietary setup
 $(call inherit-product, vendor/xiaomi/polaris/polaris-vendor.mk)

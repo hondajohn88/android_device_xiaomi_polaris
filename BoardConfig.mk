@@ -15,6 +15,10 @@ TARGET_OTA_ASSERT_DEVICE := polaris
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
+# HIDL
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
+
 # Kernel
 TARGET_KERNEL_CONFIG := polaris_user_defconfig
 
